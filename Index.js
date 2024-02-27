@@ -1,17 +1,19 @@
-import express from 'express'
-const app=express()
+import express from 'express';
+import authRouter from './Routes/Auth.js'; // Adjust the path if necessary
+import adminRouter from './Routes/Admin.js'; // Adjust the path if necessary
+import userRouter from './Routes/Users.js'
 import './Db.js'
-const port=process.env.port
-import dotenv from "dotenv";
-import cors from 'cors'
-dotenv.config()
-import authRouter from './Routes/Auth.js'
-app.use(express.json())
-app.use(cors())
+const app = express();
 
+app.use(express.json());
 
-app.use('/',authRouter)
+// Use routers
+app.use('/', authRouter);
+app.use('/admin', adminRouter);
+app.use('/user',userRouter)
 
-app.listen(4000,()=>{
-    console.log(`running on ${port}`);
-})
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
