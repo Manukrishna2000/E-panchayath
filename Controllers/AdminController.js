@@ -1,3 +1,4 @@
+import Meeting from "../Models/Meeting.js"
 import Service from "../Models/Service.js"
 
 export const Addservice=async(req,res,next)=>{
@@ -25,4 +26,16 @@ export const viewService=async (req,res,next)=>{
 
     }
 
+}
+
+export const addMeeting=async(req,res,next)=>{
+    try{
+        let newMeeting=new Meeting(req.body)
+        let response=await newMeeting.save()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
 }

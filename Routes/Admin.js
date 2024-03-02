@@ -1,9 +1,10 @@
 import express from 'express'
-import { Addservice, viewService } from '../Controllers/AdminController.js'
+import { Addservice, addMeeting, viewService } from '../Controllers/AdminController.js'
 const router=express()
 
 
 router.post('/addservice',Addservice)
 router.get('/viewservice',viewService)
+router.post('/meeting',addMeeting)
 
 export default router

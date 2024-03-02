@@ -1,4 +1,5 @@
 import Application from "../Models/Application.js"
+import Meeting from "../Models/Meeting.js"
 import WorkRequest from "../Models/WorkRequest.js"
 
 export const AddApplication=async (req,res,next)=>{
@@ -14,5 +15,9 @@ export const Workrequest=async (req,res,next)=>{
 export const ApplicationById=async (req,res,next)=>{
     const id=req.params.id
     let response = await Application.findById(id)
+    res.json(response)
+}
+export const viewMeetings=async (req,res,next)=>{
+    let response = await Meeting.find()
     res.json(response)
 }
