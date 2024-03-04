@@ -1,3 +1,4 @@
+import Category from "../Models/Category.js"
 import Meeting from "../Models/Meeting.js"
 import Service from "../Models/Service.js"
 
@@ -32,6 +33,38 @@ export const addMeeting=async(req,res,next)=>{
     try{
         let newMeeting=new Meeting(req.body)
         let response=await newMeeting.save()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+export const addCategory=async(req,res,next)=>{
+    try{
+        let newMeeting=new Category(req.body)
+        let response=await newMeeting.save()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+export const deleteCategory=async(req,res,next)=>{
+    try{
+        let id=req.params.id
+        let response=await Category.findByIdAndDelete(id)
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+export const viewCategory=async(req,res,next)=>{
+    try{
+        let response=await Category.find()
         res.json(response)
         console.log(response);
     }
