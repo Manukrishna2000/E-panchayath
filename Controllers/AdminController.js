@@ -41,6 +41,18 @@ export const addMeeting=async(req,res,next)=>{
         res.json(e)
     }
 }
+
+export const viewMeeting=async(req,res,next)=>{
+    try{
+        let response=await Meeting.find()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+
 export const addCategory=async(req,res,next)=>{
     try{
         let newMeeting=new Category(req.body)
