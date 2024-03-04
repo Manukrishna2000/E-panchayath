@@ -1,5 +1,5 @@
 import express from 'express'
-import { Addservice, addCategory, addMeeting, deleteCategory, viewCategory, viewService } from '../Controllers/AdminController.js'
+import { Addservice, addCategory, addMeeting, addNews, deleteCategory, viewCategory, viewNews, viewService } from '../Controllers/AdminController.js'
 const router=express()
 
 
@@ -9,5 +9,8 @@ router.post('/meeting',addMeeting)
 router.post('/category',addCategory)
 router.delete('/deleteCategory/:id',deleteCategory)
 router.get('/category',viewCategory)
+router.post('/news',addNews)
+router.get('/news',viewNews)
+
 
 export default router

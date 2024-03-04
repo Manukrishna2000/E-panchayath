@@ -1,5 +1,6 @@
 import Category from "../Models/Category.js"
 import Meeting from "../Models/Meeting.js"
+import News from "../Models/News.js"
 import Service from "../Models/Service.js"
 
 export const Addservice=async(req,res,next)=>{
@@ -65,6 +66,27 @@ export const deleteCategory=async(req,res,next)=>{
 export const viewCategory=async(req,res,next)=>{
     try{
         let response=await Category.find()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+export const addNews=async(req,res,next)=>{
+    try{
+        let newNews=await News(req.body)
+        let response=await newNews.save()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+export const viewNews=async(req,res,next)=>{
+    try{
+        let response=await News.find()
         res.json(response)
         console.log(response);
     }
