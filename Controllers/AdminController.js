@@ -94,3 +94,14 @@ export const viewNews=async(req,res,next)=>{
         res.json(e)
     }
 }
+export const deleteNews=async(req,res,next)=>{
+    try{
+        let id=req.params.id
+        let response=await News.findByIdAndDelete(id)
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
