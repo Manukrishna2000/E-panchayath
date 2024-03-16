@@ -32,7 +32,7 @@ export const viewService=async (req,res,next)=>{
 export const updateservice=async (req,res,next)=>{
     try{
         let id=req.params.id
-        let response =await Service.findByIdAndUpdate(id,req.body)
+        let response =await Service.findByIdAndUpdate(id,req.body,{new:true})
         res.json(response)
     }
     catch(e){
