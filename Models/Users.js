@@ -64,6 +64,9 @@ const staffSchema = new mongoose.Schema({
     maxlength: 200,
     // required: true
   },
+  photo:{
+    type:String
+  },
   status:{
     type:String,
     required:true

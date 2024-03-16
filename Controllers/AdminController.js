@@ -29,6 +29,18 @@ export const viewService=async (req,res,next)=>{
     }
 
 }
+export const updateservice=async (req,res,next)=>{
+    try{
+        let id=req.params.id
+        let response =await Service.findByIdAndUpdate(id,req.body)
+        res.json(response)
+    }
+    catch(e){
+        res.json(e)
+
+    }
+
+}
 
 export const addMeeting=async(req,res,next)=>{
     try{
@@ -45,6 +57,18 @@ export const addMeeting=async(req,res,next)=>{
 export const viewMeeting=async(req,res,next)=>{
     try{
         let response=await Meeting.find()
+        res.json(response)
+        console.log(response);
+    }
+    catch(e){
+        res.json(e)
+    }
+}
+
+export const deleteMeeting=async(req,res,next)=>{
+    try{
+        let id=req.params.id
+        let response=await Meeting.findByIdAndDelete(id)
         res.json(response)
         console.log(response);
     }
@@ -115,5 +139,15 @@ export const deleteNews=async(req,res,next)=>{
     }
     catch(e){
         res.json(e)
+    }
+}
+export const Notification=async(req,res,next)=>{
+    try{
+        let newNotification = new Notification(req.body)
+        let response=await newNotification.save()
+        console.log(response);
+    }
+    catch{
+        
     }
 }
